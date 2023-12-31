@@ -1,0 +1,112 @@
+.main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.6fr 0.2fr;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    background: url("./star.jpg") no-repeat center/cover;
+    height: 100vh;
+    width: 100vw;
+    
+}
+.images {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 2fr;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    column-gap: 40px;
+}
+.flipcard, .img{
+    width: 17vw;
+    height: 23.66vw;
+}
+.flipcard{
+  perspective: 800px;
+}
+.img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transform-origin: center right;
+  transition: transform 1s;
+}
+.img.is-flipped {
+  transform: translateX(-100%) rotateY(-180deg);
+}
+.card__face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  
+  backface-visibility: hidden;
+}
+.card__face--front {
+  background: url("card_unflipped.jpg") no-repeat center/cover;
+  border-radius: 12px;
+  
+}
+.card__face--back {
+  background-image: url("card2_flipped.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; 
+  transform: rotateY(180deg);
+  border-radius: 12px;
+}
+.card__face--front:hover {
+    transform: translateY(-15px);
+    transition: 0.6s;
+    cursor: pointer;
+
+}
+
+.title p {
+    font-family: 'Pacifico', cursive;
+    font-size: 50px;
+    color: rgb(225, 202, 2);
+    text-shadow: 2px 2px rgb(109, 86, 10);
+    text-align-last: center;
+}
+.title{
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+@media only screen and (min-width: 480px) and (max-width: 950px){
+  .title p{
+    font-size: 40px;
+  }
+  .images{
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2fr 2fr;
+    column-gap: 20px;
+    row-gap: 20px;
+  }
+  .flipcard{
+    width: 38vw;
+    height: 52.88vw;
+  }
+}
+
+@media only screen and (max-width: 479px){
+  .images{
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 2fr 2fr 2fr;
+    row-gap: 15px;
+  }
+  .flipcard{
+    width: 60vw;
+    height: 83.5vw;
+  }
+  .title p{
+    font-size: 35px;
+  }
+
+}
